@@ -50,7 +50,20 @@ app.controller('CustomersController', function CustomersController($scope, Data)
 			//Error
 			function customerAddError(data) { 
 				$scope.error = data; 
-			}			
-		}			
-	}
+			}
+			//Scope voor het verwijderen van de klant
+			$scope.removeCustomer = function removeCustomer(id) {
+				if (confirm('Ben je zeker ervan dat je deze klant wilt verwijderen?')) {
+					Data.removeCustomer(id).success(customerRemoveSuccess);
+				}
+			}
+			//Functie voor het succesvol verwijderen van de klant
+			function customerRemoveSuccess(data) {
+				var i = $scope.customers.length;
+				while (i--) {
+					if ($scope.customers[i].id == data) {
+						$scope.customers.splice(i, l);
+					}
+				}
+			}		
 });
