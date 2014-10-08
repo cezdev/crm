@@ -11,8 +11,8 @@ app.config(function configure($routeProvider){
 app.factory('Data', function Data($http){
 	return {
 		//CRUD-functies voor klanten
-		getCustomers : 	 function getCustomers()			{ return $http.get('/customer/all');},
-		getCustomers : 	 function getCustomers(id)			{ return $http.get('/customer?id='+ id);},
+		getCustomers : 	 function getCustomers()			{ return $http.get('/customers/all');},
+		getCustomers : 	 function getCustomers(id)			{ return $http.get('/customers?id='+ id);},
 		addCustomers : 	 function getCustomers(data)		{ return $http.post('/customers',data);},
 		removeCustomers: function removeCustomers(id) 		{ return $http.delete('/customers?id='+id);},
 		//CRUD-functies voor transacties
